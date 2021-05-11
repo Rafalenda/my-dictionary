@@ -11,7 +11,15 @@ function App() {
         </main>
 
         <footer>
-          <small>Coded by Rafaela</small>
+          <small>
+            Coded by{" "}
+            <a
+              href="https://github.com/Rafalenda/my-dictionary"
+              target="_blank"
+            >
+              Rafaela
+            </a>{" "}
+          </small>
         </footer>
       </div>
     </div>

@@ -12,7 +12,6 @@ export default function Dictionary() {
     setKeyword(event.target.value);
   }
   function handleResponse(response) {
-    console.log(response.data);
     setResult(response.data[0]);
   }
 
@@ -30,7 +29,7 @@ export default function Dictionary() {
         <input type="submit" value="Search" />
       </form>
 
-      <Result result={result} />
+      <Result myResult={result} />
     </div>
   );
 }
