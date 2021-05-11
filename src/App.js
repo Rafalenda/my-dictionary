@@ -16,6 +16,7 @@ function App() {
             <a
               href="https://github.com/Rafalenda/my-dictionary"
               target="_blank"
+              rel="noreferrer"
             >
               Rafaela
             </a>{" "}
