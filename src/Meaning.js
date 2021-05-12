@@ -8,11 +8,14 @@ export default function Meaning(props) {
       {props.myMeaning.definitions.map(function (item, index) {
         return (
           <div key={index}>
-            <p>Definition: {item.definition}</p>
+            <p>
+              <strong>Definition:</strong> {item.definition}
+            </p>
             <p>
               {item.example ? "Example: " : ""} <em>{item.example} </em>
             </p>
 
+            {item.synonyms ? "Synonym: " : ""}
             {item.synonyms?.map(function (item, index) {
               return (
                 <button className="btn btn-outline-secondary" key={index}>
