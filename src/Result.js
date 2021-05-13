@@ -6,21 +6,26 @@ export default function Result(props) {
 
   return (
     <div>
-      <h2>{props.myResult?.word.toUpperCase()}</h2>
-
-      {props.myResult?.phonetics.map(function (item, index) {
-        return (
-          <div key={index}>
-            {item.text}{" "}
-            <a href={item.audio} target="_blank" rel="noreferrer">
-              Listen here
-            </a>
-          </div>
-        );
-      })}
+      <section>
+        <h2>{props.myResult?.word}</h2>{" "}
+        {props.myResult?.phonetics.map(function (item, index) {
+          return (
+            <div key={index}>
+              {item.text}{" "}
+              <a href={item.audio} target="_blank" rel="noreferrer">
+                Listen here
+              </a>
+            </div>
+          );
+        })}{" "}
+      </section>
 
       {props.myResult?.meanings.map(function (myMeaning, index) {
-        return <Meaning key={index} myMeaning={myMeaning} />;
+        return (
+          <section key={index}>
+            <Meaning myMeaning={myMeaning} />{" "}
+          </section>
+        );
       })}
     </div>
   );

@@ -23,13 +23,14 @@ export default function Dictionary() {
 
   return (
     <div className="Dictionary">
-      <p>Search a Word</p>
+      <div className="hint">Type a word...</div>
+
       <form onSubmit={submit}>
         <input type="search" onChange={changeKeyword} />
-        <input type="submit" value="Search" />
       </form>
+      <div className="hint">Suggested words: beach, castle, horse...</div>
 
-      <Result myResult={result} />
+      {result ? <Result myResult={result} /> : null}
     </div>
   );
 }
