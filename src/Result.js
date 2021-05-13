@@ -13,7 +13,7 @@ export default function Result(props) {
             <div key={index}>
               {item.text}{" "}
               <a href={item.audio} target="_blank" rel="noreferrer">
-                Listen here
+                Listen
               </a>
             </div>
           );

@@ -4,33 +4,45 @@ import "./Dictionary.css";
 import Result from "./Result";
 
 export default function Dictionary() {
-  let [keyword, setKeyword] = useState("");
+  let [keyword, setKeyword] = useState("sunset");
   let [result, setResult] = useState(null);
+  let [loaded, setLoaded] = useState(false);
 
-  function changeKeyword(event) {
-    event.preventDefault();
-    setKeyword(event.target.value);
-  }
   function handleResponse(response) {
-    setResult(response.data[0]);
+    setResult(response.data[0]); // muda estado e atualiza o render(ver return da funcao)
   }
 
-  function submit(event) {
-    event.preventDefault();
+  function search() {
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
     axios.get(apiUrl).then(handleResponse);
   }
 
-  return (
-    <div className="Dictionary">
-      <div className="hint">Type a word...</div>
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
 
-      <form onSubmit={submit}>
-        <input type="search" onChange={changeKeyword} />
-      </form>
-      <div className="hint">Suggested words: beach, castle, horse...</div>
+  function changeKeyword(event) {
+    setKeyword(event.target.value);
+  }
 
-      {result ? <Result myResult={result} /> : null}
-    </div>
-  );
+  if (loaded) {
+    //aqui comeca a rodar a funcao, acima apenas declaracoes
+    return (
+      <div className="Dictionary">
+        <div className="hint">Type a word...</div>
+
+        <form onSubmit={handleSubmit}>
+          <input type="search" onChange={changeKeyword} value={keyword} />
+        </form>
+        <div className="hint">Suggested words: beach, castle, horse...</div>
+
+        {result ? <Result myResult={result} /> : null}
+      </div>
+    );
+  } else {
+    search();
+    setLoaded(true);
+    return null;
+  }
 }
