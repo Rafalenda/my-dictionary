@@ -1,0 +1,7 @@
+/* .Result .img {
+  border: darkgrey solid 2px;
+} */
+img {
+  border-radius: 10px;
+  padding: 5px;
+}

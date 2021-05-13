@@ -4,17 +4,35 @@ import "./Dictionary.css";
 import Result from "./Result";
 
 export default function Dictionary() {
-  let [keyword, setKeyword] = useState("sunset");
+  let [keyword, setKeyword] = useState("beach");
   let [result, setResult] = useState(null);
   let [loaded, setLoaded] = useState(false);
+  let [imagesUrl, setImagesUrl] = useState([]);
 
   function handleResponse(response) {
     setResult(response.data[0]); // muda estado e atualiza o render(ver return da funcao)
+  }
+  function handleResponseImages(response) {
+    let listOfImages = [];
+    for (let i = 0; i < response.data.photos.length; i++) {
+      listOfImages.push(response.data.photos[i]?.src.small);
+    }
+    setImagesUrl(listOfImages);
   }
 
   function search() {
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
     axios.get(apiUrl).then(handleResponse);
+
+    let apikeyPexels = `563492ad6f91700001000001f6c60812b7bf400ba198f9efb9c127cf`;
+    let apiUrlPexels = `https://api.pexels.com/v1/search?query=${keyword}`;
+    axios
+      .get(apiUrlPexels, {
+        headers: {
+          Authorization: apikeyPexels,
+        },
+      })
+      .then(handleResponseImages);
   }
 
   function handleSubmit(event) {
@@ -31,13 +49,12 @@ export default function Dictionary() {
     return (
       <div className="Dictionary">
         <div className="hint">Type a word...</div>
-
         <form onSubmit={handleSubmit}>
           <input type="search" onChange={changeKeyword} value={keyword} />
         </form>
         <div className="hint">Suggested words: beach, castle, horse...</div>
 
-        {result ? <Result myResult={result} /> : null}
+        {result ? <Result myResult={result} myImg={imagesUrl} /> : null}
       </div>
     );
   } else {
