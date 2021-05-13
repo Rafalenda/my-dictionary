@@ -1,5 +1,4 @@
 .Dictionary section {
-  width: 100%;
   background-color: white;
   padding: 20px;
   margin: 20px 0;
@@ -8,12 +7,11 @@
 }
 
 .Dictionary input {
-  width: 70%;
+  width: 100%;
   border: solid 1px rgba(77, 78, 78, 0.534);
   border-radius: 5px;
   padding: 8px;
 }
 .Dictionary .hint {
   font-size: 12px;
-  margin: 10px 0 10px 0;
 }
