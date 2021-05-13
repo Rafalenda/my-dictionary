@@ -23,7 +23,17 @@ export default function Result(props) {
 
       <section className="img">
         {props.myImg.map(function (item, index) {
-          return <img key={index} src={item} alt="_" />;
+          return (
+            <a
+              key={index}
+              href={item.original}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" "}
+              <img key={index} src={item.small} alt="_" />
+            </a>
+          );
         })}
       </section>
 

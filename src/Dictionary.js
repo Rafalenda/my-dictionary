@@ -15,7 +15,7 @@ export default function Dictionary() {
   function handleResponseImages(response) {
     let listOfImages = [];
     for (let i = 0; i < response.data.photos.length; i++) {
-      listOfImages.push(response.data.photos[i]?.src.small);
+      listOfImages.push(response.data.photos[i]?.src);
     }
     setImagesUrl(listOfImages);
   }
