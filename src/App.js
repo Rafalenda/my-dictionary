@@ -12,7 +12,7 @@ function App() {
           <main>
             <Switch>
               <Route exact path="/">
-                <h1 class="display-2">Dictionary</h1>
+                <h1 className="display-2">Dictionary</h1>
                 <Dictionary />
               </Route>
 
