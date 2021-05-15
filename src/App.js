@@ -17,12 +17,12 @@ function App() {
               </Route>
 
               <Route path="/definitions/:word">
-                <h1>Dictionary</h1>
+                <h1 className="display-2">Dictionary</h1>
                 <Dictionary />
               </Route>
 
               <Route path="/definitions">
-                <h1>Dictionary</h1>
+                <h1 className="display-2">Dictionary</h1>
                 <Dictionary />
               </Route>
 
