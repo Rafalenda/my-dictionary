@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Dictionary.css";
 import Result from "./Result";
+import { useParams } from "react-router-dom";
 
 export default function Dictionary() {
-  let [keyword, setKeyword] = useState("beach");
+  const { word } = useParams(); // const params = useParams(); const word = params.word;
+
+  let [keyword, setKeyword] = useState(word || "beach");
   let [result, setResult] = useState(null);
   let [loaded, setLoaded] = useState(false);
   let [imagesUrl, setImagesUrl] = useState([]);
