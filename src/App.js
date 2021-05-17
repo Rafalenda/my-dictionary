@@ -1,6 +1,6 @@
 import "./App.css";
 import Dictionary from "./Dictionary";
-//import Navbar from "./Navbar";
+import Navbar from "./Navbar";
 import Contact from "./Contact";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -10,6 +10,7 @@ function App() {
       <div className="App">
         <div className="container">
           <main>
+            <Navbar />
             <Switch>
               <Route exact path="/">
                 <h1 className="display-2">Dictionary</h1>
