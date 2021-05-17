@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
+      <a className="navbar-brand" href="/">
         My Dictionary
       </a>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -19,23 +19,23 @@ export default function Navbar() {
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <Link class="nav-link" to="/">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <Link className="nav-link" to="/">
               Home
             </Link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li className="nav-item">
+            <a className="nav-link" href="/">
               My vocabulary
             </a>
           </li>
 
-          <li class="nav-item dropdown">
+          <li className="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
-              href="#"
+              className="nav-link dropdown-toggle"
+              href="/"
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
@@ -45,21 +45,21 @@ export default function Navbar() {
               Recent
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">
+            {/* <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a className="dropdown-item" href="#">
                 Action
               </a>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Another action
               </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" href="#">
                 Something else here
               </a>
-            </div>
+            </div> */}
           </li>
           <li>
-            <Link class="nav-link" to="/contact">
+            <Link className="nav-link" to="/contact">
               <button className="btn btn-secondary">Contact us</button>
             </Link>
           </li>
