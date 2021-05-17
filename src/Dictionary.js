@@ -29,7 +29,7 @@ export default function Dictionary() {
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
     axios.get(apiUrl).then(handleResponse);
 
-    let apikeyPexels = `563492ad6f91700001000001f6c60812b7bf400ba198f9efb9c127cf`;
+    let apikeyPexels = process.env.REACT_APP_API_KEY_PEXELS;
     let apiUrlPexels = `https://api.pexels.com/v1/search?query=${keyword}`;
     axios
       .get(apiUrlPexels, {
