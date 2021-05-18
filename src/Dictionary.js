@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Dictionary.css";
 import Result from "./Result";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 export default function Dictionary() {
   const { word } = useParams(); // const params = useParams(); const word = params.word;
+  let history = useHistory();
 
-  let [keyword, setKeyword] = useState(word || "beach");
+  let [keyword, setKeyword] = useState(word);
   let [result, setResult] = useState(null);
   let [loaded, setLoaded] = useState(false);
   let [imagesUrl, setImagesUrl] = useState([]);
@@ -23,14 +24,14 @@ export default function Dictionary() {
     setImagesUrl(listOfImages);
   }
 
-  function search() {
+  function search(searchWord) {
     setResult(null);
     setImagesUrl([]);
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${searchWord}`;
     axios.get(apiUrl).then(handleResponse);
 
     let apikeyPexels = process.env.REACT_APP_API_KEY_PEXELS;
-    let apiUrlPexels = `https://api.pexels.com/v1/search?query=${keyword}`;
+    let apiUrlPexels = `https://api.pexels.com/v1/search?query=${searchWord}`;
     axios
       .get(apiUrlPexels, {
         headers: {
@@ -42,15 +43,22 @@ export default function Dictionary() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    search();
+    //search(keyword);
+    history.push(`/definitions/${keyword}`);
   }
 
   function changeKeyword(event) {
     setKeyword(event.target.value);
   }
 
+  //every time 'word' changes, it runs the arrow function to change keyword to word and call the api's to update the results
+  React.useEffect(() => {
+    setKeyword(word);
+    search(word);
+  }, [word]);
+
+  //the function starts to run here, only declarations above
   if (loaded) {
-    //aqui comeca a rodar a funcao, acima apenas declaracoes
     return (
       <div className="Dictionary">
         <div className="hint">Type a word...</div>
@@ -63,7 +71,7 @@ export default function Dictionary() {
       </div>
     );
   } else {
-    search();
+    search(keyword);
     setLoaded(true);
     return null;
   }

@@ -2,7 +2,12 @@ import "./App.css";
 import Dictionary from "./Dictionary";
 import Navbar from "./Navbar";
 import Contact from "./Contact";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 
 function App() {
   return (
@@ -13,8 +18,7 @@ function App() {
             <Navbar />
             <Switch>
               <Route exact path="/">
-                <h1 className="display-2">Dictionary</h1>
-                <Dictionary />
+                <Redirect to="/definitions/bird" />
               </Route>
 
               <Route path="/definitions/:word">
