@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Meaning.css";
 //import { Link } from "react-router-dom";
 
@@ -20,13 +21,13 @@ export default function Meaning(props) {
             {item.synonyms ? "Synonym: " : ""}
             {item.synonyms?.map(function (item, index) {
               return (
-                <a
-                  href={`/definitions/${item}`}
+                <Link
+                  to={`/definitions/${item}`}
                   className="btn btn-secondary synonym"
                   key={index}
                 >
                   {item}
-                </a>
+                </Link>
               );
             })}
           </div>
