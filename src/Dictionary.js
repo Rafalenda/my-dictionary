@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import axios from "axios";
 import "./Dictionary.css";
 import Result from "./Result";
@@ -24,7 +24,7 @@ export default function Dictionary() {
     setImagesUrl(listOfImages);
   }
 
-  function search(searchWord) {
+  const search = useCallback((searchWord) => {
     setResult(null);
     setImagesUrl([]);
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${searchWord}`;
@@ -39,7 +39,7 @@ export default function Dictionary() {
         },
       })
       .then(handleResponseImages);
-  }
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -55,7 +55,7 @@ export default function Dictionary() {
   React.useEffect(() => {
     setKeyword(word);
     search(word);
-  }, [word]);
+  }, [word, search]);
 
   //the function starts to run here, only declarations above
   if (loaded) {
